@@ -10,4 +10,9 @@
 insert into tbl_board(bno, title, content, writer)
 values(seq_board.nextval, #{title}, #{content}, #{writer})
 </insert>
+
+<!-- 게시물 조회 -->
+<select id="select" resultType="org.blog.domain.BoardVO">
+select * from tbl_board where bno = #{bno}
+</select>
 </mapper>

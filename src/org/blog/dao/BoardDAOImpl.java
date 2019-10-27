@@ -35,15 +35,24 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public boolean delete(long bno) {
+	public boolean delete(Long bno) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public BoardVO select(long bno) {
-		// TODO Auto-generated method stub
-		return null;
+	public BoardVO select(Long bno) {
+		BoardVO result = null;
+
+		try (SqlSession session = factory.openSession()) {
+
+			result = session.selectOne("org.blog.dao.BoardMapper.select", bno);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
 	}
 
 	@Override

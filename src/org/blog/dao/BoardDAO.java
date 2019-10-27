@@ -12,9 +12,9 @@ public interface BoardDAO {
 
 	public boolean update(BoardVO vo);
 
-	public boolean delete(long bno);
+	public boolean delete(Long bno);
 
-	public BoardVO select(long bno);
+	public BoardVO select(Long bno);
 
 	public List<BoardVO> getList();
 
