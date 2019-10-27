@@ -1,12 +1,9 @@
 package org.blog.test;
 
-import java.io.Console;
-
 import org.blog.dao.BoardDAO;
 import org.blog.dao.BoardDAOImpl;
 import org.blog.domain.BoardVO;
 import org.blog.dto.PagingDTO;
-import org.junit.jupiter.api.Test;
 
 import lombok.extern.log4j.Log4j;
 @Log4j
