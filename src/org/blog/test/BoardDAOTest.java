@@ -24,9 +24,13 @@ class BoardDAOTest {
 
 	}
 
-	@Test
+	//@Test
 	void selectTest() {
 		log.info(dao.select(2562L));
 	}
 
+	@Test
+	void getListTest() {
+		log.info(dao.getList());
+	}
 }

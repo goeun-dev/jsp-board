@@ -57,8 +57,17 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public List<BoardVO> getList() {
-		// TODO Auto-generated method stub
-		return null;
+		List<BoardVO> result = null;
+
+		try (SqlSession session = factory.openSession()) {
+
+			result = session.selectList("org.blog.dao.BoardMapper.getList");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
 	}
 
 }
