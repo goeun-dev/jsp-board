@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="../../Bootswatch_ Litera_files/bootstrap.css" media="screen">
 <link rel="stylesheet" href="../../Bootswatch_ Litera_files/custom.min.css">
 <script type="text/javascript" async="" src="../../Bootswatch_ Litera_files/ga.js.다운로드"></script>
-<title>게시물 리스트 조회</title>
+<title>board list</title>
 <style type="text/css">
 .page-align {
 	width: 100%;

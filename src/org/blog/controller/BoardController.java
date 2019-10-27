@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.blog.dao.BoardDAO;
 import org.blog.dao.BoardDAOImpl;
+import org.blog.domain.BoardVO;
 import org.blog.dto.PageMaker;
 import org.blog.dto.PagingDTO;
 
@@ -73,6 +74,8 @@ public class BoardController extends BasicController {
 	@RequestMapping(value = "/board/update", type = "GET")
 	public String updateForm(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// bno, page, amount
+		long bno = Long.parseLong(req.getParameter("bno"));
+		req.setAttribute("board", dao.select(bno));
 
 		return "/board/update";
 	}
@@ -81,16 +84,37 @@ public class BoardController extends BasicController {
 	@RequestMapping(value = "/board/update", type = "POST")
 	public String updatePost(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// bno, page, amount
+		String title = req.getParameter("title");
+		String content = req.getParameter("content");
+		Long bno = Long.parseLong(req.getParameter("bno"));
+		System.out.println(bno);
 
-		return ":redirect/read";
+		BoardVO vo = new BoardVO();
+		vo.setBno(bno);
+		vo.setTitle(title);
+		vo.setContent(content);
+
+		dao.update(vo);
+
+		return "redirect:/list";
+	}
+
+	// 삭제 폼
+	@RequestMapping(value = "/board/delete", type = "GET")
+	public String deleteForm(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		// bno, page, amount
+
+		return "/board/delete";
 	}
 
 	// 삭제
 	@RequestMapping(value = "/board/delete", type = "POST")
-	public String delete(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public String deletePost(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// bno, page, amount
+		Long bno = Long.parseLong(req.getParameter("bno"));
+		dao.delete(bno);
 
-		return ":redirect/list";
+		return "redirect:/list";
 	}
 
 }
