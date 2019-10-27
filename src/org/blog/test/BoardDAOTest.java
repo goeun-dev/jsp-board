@@ -4,6 +4,7 @@ import org.blog.dao.BoardDAO;
 import org.blog.dao.BoardDAOImpl;
 import org.blog.domain.BoardVO;
 import org.blog.dto.PagingDTO;
+import org.junit.jupiter.api.Test;
 
 import lombok.extern.log4j.Log4j;
 @Log4j
@@ -58,5 +59,10 @@ class BoardDAOTest {
 		vo.setTitle("제목 수정 테스트");
 		vo.setContent("내용 수정 테스트");
 		log.info(dao.update(vo));
+	}
+
+	@Test
+	void getCountTest() {
+		log.info(dao.getCount());
 	}
 }

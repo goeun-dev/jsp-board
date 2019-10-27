@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.blog.dao.BoardDAO;
 import org.blog.dao.BoardDAOImpl;
+import org.blog.dto.PageMaker;
 import org.blog.dto.PagingDTO;
 
 import lombok.extern.log4j.Log4j;
@@ -35,9 +36,11 @@ public class BoardController extends BasicController {
 
 		// dto 생성
 		PagingDTO dto = new PagingDTO(page, amount);
+		PageMaker pm = new PageMaker(dao.getCount(), dto);
 
 		// setAttribute
 		req.setAttribute("list", dao.getList(dto));
+		req.setAttribute("pm", pm);
 
 		log.info("list......................");
 
@@ -48,6 +51,7 @@ public class BoardController extends BasicController {
 	@RequestMapping(value = "/board/read", type = "GET")
 	public String read(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// bno, page, amount
+
 
 		return "/board/read";
 	}

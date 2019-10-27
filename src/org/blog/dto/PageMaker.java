@@ -1,5 +1,10 @@
 package org.blog.dto;
 
+import lombok.Getter;
+import lombok.ToString;
+
+@Getter
+@ToString
 public class PageMaker {
 
 	private int start;

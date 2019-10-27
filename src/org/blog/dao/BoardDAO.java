@@ -19,4 +19,5 @@ public interface BoardDAO {
 
 	public List<BoardVO> getList(PagingDTO dto);
 
+	public int getCount();
 }

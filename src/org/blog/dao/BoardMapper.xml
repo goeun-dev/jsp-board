@@ -36,6 +36,11 @@ where rn > (#{page} -1) * #{amount}
 ]]>
 </select>
 
+<!-- 게시물 개수 조회 -->
+<select id="getCount" resultType="int">
+select count(bno) from tbl_board
+</select>
+
 <!-- 게시물 수정 -->
 <update id="update">
 update tbl_board set

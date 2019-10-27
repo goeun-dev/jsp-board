@@ -94,4 +94,19 @@ public class BoardDAOImpl implements BoardDAO {
 		return result;
 	}
 
+	@Override
+	public int getCount() {
+		int result = 0;
+
+		try (SqlSession session = factory.openSession()) {
+
+			result = session.selectOne("org.blog.dao.BoardMapper.getCount");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
 }

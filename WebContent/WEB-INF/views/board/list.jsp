@@ -54,7 +54,7 @@
                 <tr>
 	                <th scope="row">${board.bno}</th>
 	                <td class="title">
-	                <a href="/board/read?bno=${board.bno}&page=&amount=">
+	                <a href="/board/read?bno=${board.bno}&page=${pm.paging.page}&amount=${pm.paging.amount}">
 	                ${board.title}
 	                </a>
 	                </td>
@@ -71,18 +71,21 @@
    	 <div class="page-align">
      <div>
        <ul class="pagination">
-			<li class="page-item disabled">
-				<a class="page-link" href="https://bootswatch.com/litera/#">«</a>
-			</li>
-			<li class="page-item active">
-				<a class="page-link" href="https://bootswatch.com/litera/#">1</a>
-			</li>
+       		<c:if test="${pm.prev}">
 			<li class="page-item">
-				<a class="page-link" href="https://bootswatch.com/litera/#">2</a>
+				<a class="page-link" href="/board/list?page=${pm.start-1}&amount=${pm.paging.amount}">«</a>
 			</li>
+			</c:if>
+			<c:forEach begin="${pm.start}" end="${pm.end}" var="num">
+			<li class='page-item ${pm.paging.page == num ? "active" : ""}'>
+				<a class="page-link" href="/board/list?page=${num}&amount=${pm.paging.amount}">${num}</a>
+			</li>
+			</c:forEach>
+			<c:if test="${pm.next}">
 			<li class="page-item">
-				<a class="page-link" href="https://bootswatch.com/litera/#">»</a>
+				<a class="page-link" href="/board/list?page=${pm.end+1}&amount=${pm.paging.amount}">»</a>
 			</li>
+			</c:if>
         </ul>
    	</div>
   	</div>
@@ -90,7 +93,7 @@
   	<jsp:include page="../include/footer.jsp"/>
 
 
-      </div>
+   	</div>
 
 	<script src="../../Bootswatch_ Litera_files/jquery.min.js.다운로드"></script>
     <script src="../../Bootswatch_ Litera_files/popper.min.js.다운로드"></script>
