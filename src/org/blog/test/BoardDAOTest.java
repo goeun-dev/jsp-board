@@ -5,6 +5,7 @@ import java.io.Console;
 import org.blog.dao.BoardDAO;
 import org.blog.dao.BoardDAOImpl;
 import org.blog.domain.BoardVO;
+import org.blog.dto.PagingDTO;
 import org.junit.jupiter.api.Test;
 
 import lombok.extern.log4j.Log4j;
@@ -31,7 +32,21 @@ class BoardDAOTest {
 
 //	@Test
 	void getListTest() {
-		log.info(dao.getList());
+		PagingDTO dto = new PagingDTO("1", "10");
+		dao.getList(dto).forEach(board -> log.info(board));
+		System.out.println();
+	}
+//	@Test
+	void getListTest2() {
+		PagingDTO dto = new PagingDTO("2", "10");
+		dao.getList(dto).forEach(board -> log.info(board));
+		System.out.println();
+	}
+//	@Test
+	void getListTest3() {
+		PagingDTO dto = new PagingDTO("3", "10");
+		dao.getList(dto).forEach(board -> log.info(board));
+		System.out.println();
 	}
 
 //	@Test
@@ -39,7 +54,7 @@ class BoardDAOTest {
 		log.info(dao.delete(2567L));
 	}
 
-	@Test
+//	@Test
 	void updateTest() {
 		BoardVO vo = new BoardVO();
 		vo.setBno(2562L);

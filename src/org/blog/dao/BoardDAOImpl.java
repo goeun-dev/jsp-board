@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.blog.domain.BoardVO;
+import org.blog.dto.PagingDTO;
 import org.blog.util.MyBatisLoader;
 
 public class BoardDAOImpl implements BoardDAO {
@@ -79,12 +80,12 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public List<BoardVO> getList() {
+	public List<BoardVO> getList(PagingDTO dto) {
 		List<BoardVO> result = null;
 
 		try (SqlSession session = factory.openSession()) {
 
-			result = session.selectList("org.blog.dao.BoardMapper.getList");
+			result = session.selectList("org.blog.dao.BoardMapper.getList", dto);
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -3,6 +3,7 @@ package org.blog.dao;
 import java.util.List;
 
 import org.blog.domain.BoardVO;
+import org.blog.dto.PagingDTO;
 
 public interface BoardDAO {
 
@@ -16,6 +17,6 @@ public interface BoardDAO {
 
 	public BoardVO select(Long bno);
 
-	public List<BoardVO> getList();
+	public List<BoardVO> getList(PagingDTO dto);
 
 }
