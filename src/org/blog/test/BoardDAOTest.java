@@ -29,8 +29,22 @@ class BoardDAOTest {
 		log.info(dao.select(2562L));
 	}
 
-	@Test
+//	@Test
 	void getListTest() {
 		log.info(dao.getList());
+	}
+
+//	@Test
+	void deleteTest() {
+		log.info(dao.delete(2567L));
+	}
+
+	@Test
+	void updateTest() {
+		BoardVO vo = new BoardVO();
+		vo.setBno(2562L);
+		vo.setTitle("제목 수정 테스트");
+		vo.setContent("내용 수정 테스트");
+		log.info(dao.update(vo));
 	}
 }

@@ -30,14 +30,37 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public boolean update(BoardVO vo) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+
+		try (SqlSession session = factory.openSession()) {
+
+			int count = session.update("org.blog.dao.BoardMapper.update", vo);
+			result = count == 1 ? true : false;
+
+			session.commit();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	@Override
 	public boolean delete(Long bno) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+
+		try (SqlSession session = factory.openSession()) {
+
+			int count = session.delete("org.blog.dao.BoardMapper.delete", bno);
+			result = count == 1 ? true : false;
+
+			session.commit();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
 	}
 
 	@Override
