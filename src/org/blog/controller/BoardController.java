@@ -51,7 +51,8 @@ public class BoardController extends BasicController {
 	@RequestMapping(value = "/board/read", type = "GET")
 	public String read(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// bno, page, amount
-
+		long bno = Long.parseLong(req.getParameter("bno"));
+		req.setAttribute("board", dao.select(bno));
 
 		return "/board/read";
 	}
